@@ -15,7 +15,6 @@
   ;; Dependency
   (dependencies
     ((dist ()) ; Standard library
-     (base ()) ; Base library
     )))
 
 ;; Library doc declaration
@@ -39,5 +38,4 @@
   (dependencies
     ((texlogo ()) ; the main library
      (dist ()) ; Standard library
-     (base ()) ; Base library
     )))
