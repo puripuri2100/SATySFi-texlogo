@@ -1,0 +1,117 @@
+@require: stdjabook
+@require: code
+@require: list
+@require: easytable/easytable
+
+@import: ../src/texlogo
+
+
+
+let-block ctx +centering it =
+  line-break true true ctx (inline-fil ++ read-inline ctx it ++ inline-fil)
+
+let-block ctx +clear-page = clear-page
+
+let-inline ctx \textrm it =
+  let ctxsf =
+    ctx |> StdJaBook.set-latin-font StdJaBook.font-latin-roman
+  in
+    read-inline ctxsf it
+
+let-inline ctx \textss it =
+  let ctxss =
+    ctx |> StdJaBook.set-latin-font StdJaBook.font-latin-sans
+  in
+    read-inline ctxss it
+
+let-inline ctx \textit it =
+  let ctxit =
+    ctx |> StdJaBook.set-latin-font StdJaBook.font-latin-italic
+  in
+    read-inline ctxit it
+
+
+let f name cmd =
+  {|\code(name);|\textrm{#cmd;}|\textss{#cmd;}|\textit{#cmd;}|}
+
+
+let c = EasyTableAlias.c
+
+
+let rule =
+  open EasyTableAlias in
+  [t;b; m 1; v 1]
+
+
+in
+
+document (|
+  title = {\TeX;logo};
+  author = {Naoki Kaneko};
+  show-title = false;
+  show-toc = false;
+|) '<
+  +section {\TeX;, \LaTeX;, \ConTeXt;} <
+    +centering{
+      \easytable ?:(rule) [c;c;c;c] (
+        List.concat [
+          {||\textrm{roman}|\textss{sans}|\textit{italic}|};
+          (f `\TeX`      {\TeX;});
+          (f `\eTeX`     {\eTeX;});
+          (f `\LaTeX`    {\LaTeX;});
+          (f `\LaTeXe`   {\LaTeXe;});
+          (f `\BibTeX`   {\BibTeX;});
+          (f `\pTeX`     {\pTeX;});
+          (f `\epTeX`    {\epTeX;});
+          (f `\pLaTeX`   {\pLaTeX;});
+          (f `\pLaTeXe`  {\pLaTeXe;});
+          (f `\pBibTeX`  {\pBibTeX;});
+          (f `\upTeX`    {\upTeX;});
+          (f `\uepTeX`   {\eupTeX;});
+          (f `\upLaTeX`  {\upLaTeX;});
+          (f `\upLaTeXe` {\upLaTeXe;});
+          (f `\upBibTeX` {\upBibTeX;});
+          (f `\JTeX`     {\JTeX;});
+          (f `\JLaTeX`   {\JLaTeX;});
+          (f `\JBibTeX`  {\JBibTeX;});
+          (f `\LuaTeX`   {\LuaTeX;});
+          (f `\LuaLaTeX` {\LuaLaTeX;});
+          (f `\XeTeX`    {\XeTeX;});
+          (f `\XeLaTeX`  {\XeLaTeX;});
+          (f `\pdfTeX`   {\pdfTeX;});
+          (f `\pdfLaTeX` {\pdfLaTeX;});
+          (f `\ConTeXt`  {\ConTeXt;});
+        ]
+      );
+    }
+  >
+  +clear-page;
+  +section {Others} <
+    +centering{
+      \easytable ?:(rule)  [c;c;c;c] (
+        List.concat [
+          {||\textrm{roman}|\textss{sans}|\textit{italic}|};
+          (f `\LyX`        {\LyX;});
+          (f `\TikZ`       {\TikZ;});
+          (f `\KOMAScript` {\KOMAScript;});
+          (f `\LaTeXTeX`   {\LaTeXTeX;});
+          (f `\PiCTeX`     {\PiCTeX;});
+          (f `\teTeX`      {\teTeX;});
+          (f `\SageTeX`    {\SageTeX;});
+          (f `\TTH`        {\TTH;});
+          (f `\HeVea`      {\HeVeA;});
+          (f `\KaTeX`      {\KaTeX;});
+          (f `\KET`        {\KET;});
+          (f `\KETpic`     {\KETpic;});
+          (f `\LaTeXiT`    {\LaTeXiT;});
+          (f `\LaTeXML`    {\LaTeXML;});
+          (f `\pTeXsT`     {\pTeXsT;});
+          (f `\BaSiX`      {\BaSiX;});
+          (f `\TeXonLaTeX` {\TeXonLaTeX;});
+          (f `\ApTeX`      {\ApTeX;});
+          (f `\DVIPDFMx`   {\DVIPDFMx;});
+        ]
+      );
+    }
+  >
+>

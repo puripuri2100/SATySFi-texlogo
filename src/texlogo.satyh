@@ -1,0 +1,440 @@
+@require: pervasives
+@require: math
+
+
+
+
+module TeXLogo : sig
+
+
+	direct \TeX : [] inline-cmd
+	direct \eTeX : [] inline-cmd
+	direct \LaTeX : [] inline-cmd
+	direct \LaTeXe : [] inline-cmd
+	direct \BibTeX : [] inline-cmd
+	direct \pTeX : [] inline-cmd
+	direct \epTeX : [] inline-cmd
+	direct \pLaTeX : [] inline-cmd
+	direct \pLaTeXe : [] inline-cmd
+	direct \pBibTeX : [] inline-cmd
+	direct \upTeX : [] inline-cmd
+	direct \eupTeX : [] inline-cmd
+	direct \upLaTeX : [] inline-cmd
+	direct \upLaTeXe : [] inline-cmd
+	direct \upBibTeX : [] inline-cmd
+	direct \JTeX : [] inline-cmd
+	direct \JLaTeX : [] inline-cmd
+	direct \JBibTeX : [] inline-cmd
+	direct \LuaTeX : [] inline-cmd
+	direct \LuaLaTeX : [] inline-cmd
+	direct \XeTeX : [] inline-cmd
+	direct \XeLaTeX : [] inline-cmd
+	direct \pdfTeX : [] inline-cmd
+	direct \pdfLaTeX : [] inline-cmd
+	direct \ConTeXt : [] inline-cmd
+	direct \LyX : [] inline-cmd
+	direct \TikZ : [] inline-cmd
+	direct \KOMAScript : [] inline-cmd
+	direct \LaTeXTeX : [] inline-cmd
+	direct \PiCTeX : [] inline-cmd
+	direct \teTeX : [] inline-cmd
+	direct \SageTeX : [] inline-cmd
+	direct \TTH : [] inline-cmd
+	direct \HeVeA : [] inline-cmd
+	direct \KaTeX : [] inline-cmd
+	direct \KET : [] inline-cmd
+	direct \KETpic : [] inline-cmd
+	direct \LaTeXiT : [] inline-cmd
+	direct \LaTeXML : [] inline-cmd
+	direct \pTeXsT : [] inline-cmd
+	direct \BaSiX : [] inline-cmd
+	direct \TeXonLaTeX : [] inline-cmd
+	direct \ApTeX : [] inline-cmd
+	direct \DVIPDFMx : [] inline-cmd
+
+end = struct
+
+
+let-inline ctx \TeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fE =
+		ctx
+		|> set-manual-rising (0pt -' (size *' 0.15))
+		|> read-inline
+  in
+    f {T} ++ kern (size *' 0.125) ++ fE {E} ++ kern (size *' 0.08) ++ f {X}
+
+let-inline ctx \eTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {${\epsilon}} ++ f {-} ++ kern (size *' 0.08) ++ f {\TeX;}
+
+
+let-inline ctx \LaTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fA =
+    ctx
+    |> set-font-size (size *' 0.85)
+    |> set-manual-rising (size *' 0.1)
+    |> read-inline
+  in
+      f {L} ++ kern (size *' 0.3) ++ fA {A} ++ kern (size *' 0.15) ++ f {\TeX;}
+
+
+let-inline ctx \LaTeXe =
+  let size = get-font-size ctx in
+  let fe =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.125))
+    |> read-inline
+  in
+  let f = read-inline ctx in
+    f {\LaTeX;} ++ inline-skip (size *' 0.15) ++ f {2} ++ fe {${\epsilon}}
+
+
+let-inline ctx \BibTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fI =
+    ctx
+    |> set-font-size (size *' 0.75)
+    |> read-inline
+  in
+  let fB =
+    ctx
+    |> set-font-size (size *' 0.75)
+    |> read-inline
+  in
+    f {B} ++ kern (size *' 0.05) ++ fI {I} ++ kern (size *' 0.025) ++ fB {B} ++ kern (size *' 0.08) ++ f {\TeX;}
+
+
+let-inline ctx \pTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {p} ++ kern (size *' 0.05) ++ f {\TeX;}
+
+
+let-inline ctx \epTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {${\epsilon}} ++ f {-} ++ kern (size *' 0.08) ++ f {\pTeX;}
+
+
+let-inline ctx \pLaTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {p} ++ kern (size *' 0.05) ++ f {\LaTeX;}
+
+
+let-inline ctx \pLaTeXe =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {p} ++ kern (size *' 0.05) ++ f {\LaTeXe;}
+
+
+let-inline ctx \pBibTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {p} ++ kern (size *' 0.05) ++ f {\BibTeX;}
+
+
+let-inline ctx \upTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {up} ++ kern (size *' 0.05) ++ f {\TeX;}
+
+
+let-inline ctx \eupTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {${\epsilon}} ++ f {-} ++ kern (size *' 0.08) ++ f {\upTeX;}
+
+
+let-inline ctx \upLaTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {up} ++ kern (size *' 0.05) ++ f {\LaTeX;}
+
+
+let-inline ctx \upLaTeXe =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {up} ++ kern (size *' 0.05) ++ f {\LaTeXe;}
+
+
+let-inline ctx \upBibTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {up} ++ kern (size *' 0.05) ++ f {\BibTeX;}
+
+
+let-inline ctx \JTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fJ =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.2))
+    |> read-inline
+  in
+    fJ {J} ++ kern (size *' 0.15) ++ f {\TeX;}
+
+
+let-inline ctx \JLaTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fJ =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.2))
+    |> read-inline
+  in
+    fJ {J} ++ kern (size *' 0.15) ++ f {\LaTeX;}
+
+
+let-inline ctx \JBibTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fJ =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.2))
+    |> read-inline
+  in
+    fJ {J} ++ kern (size *' 0.15) ++ f {\BibTeX;}
+
+
+let-inline ctx \LuaTeX =
+  let f = read-inline ctx in
+    f {Lua} ++ f {\TeX;}
+
+
+let-inline ctx \LuaLaTeX =
+  let f = read-inline ctx in
+    f {Lua} ++ f {\LaTeX;}
+
+
+let-inline ctx \XeTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fE =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.15))
+    |> read-inline
+  in
+    f {X} ++ kern (size *' 0.08) ++ fE {Ǝ} ++ kern (size *' 0.13) ++ f {\TeX;}
+
+
+let-inline ctx \XeLaTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fE =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.15))
+    |> read-inline
+  in
+    f {X} ++ kern (size *' 0.08) ++ fE {Ǝ} ++ kern (size *' 0.1) ++ f {\LaTeX;}
+
+
+let-inline ctx \pdfTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {pdf} ++ inline-skip (size *' 0.08)++ f {\TeX;}
+
+
+let-inline ctx \pdfLaTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {pdf} ++ inline-skip (size *' 0.08)++ f {\LaTeX;}
+
+
+let-inline ctx \ConTeXt =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {C} ++ kern (size *' 0.0333) ++ f {on} ++ kern (size *' 0.0667) ++ f {\TeX;} ++ kern (size *' 0.0333) ++ f {t}
+
+
+let-inline ctx \LyX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fY =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.25))
+    |> read-inline
+  in
+    f {L} ++ kern (size *' 0.1667) ++ fY {Y} ++ kern (size *' 0.125) ++ f {X}
+
+
+let-inline ctx \TikZ =
+  let f = read-inline ctx in
+  let fk =
+    ctx
+    |> set-font Latin (`Junicode-it`, 1., 0.)
+    |> read-inline
+  in
+    f {Ti} ++ fk {k} ++ f {Z}
+
+
+let-inline ctx \KOMAScript =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {K} ++ inline-skip (size *' 0.05) ++ f {O} ++ inline-skip (size *' 0.05)
+      ++ f {M} ++ inline-skip (size *' 0.05) ++ f {A} ++ inline-skip (size *' 0.1)
+      ++ f {-} ++ inline-skip (size *' 0.1) ++ f {Script}
+
+
+let-inline ctx \LaTeXTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fA =
+    ctx
+    |> set-font-size (size *' 0.85)
+    |> set-manual-rising (size *' 0.1)
+    |> read-inline
+  in
+    f {(} ++ kern (size *' 0.15) ++ f {L} ++ kern (size *' 0.3)
+      ++ fA {A} ++ kern (size *' 0.2) ++ f{)} ++ kern (size *' 0.15) ++ f{\TeX;}
+
+
+let-inline ctx \PiCTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fI =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.25))
+    |> read-inline
+  in
+    f{P} ++ kern (size *' 0.12) ++ fI {I} ++ kern (size *' 0.075) ++ f {C}
+      ++ kern (size *' 0.11) ++ f {\TeX;}
+
+
+let-inline ctx \SageTeX =
+  let f = read-inline ctx in
+    f {Sage} ++ f{\TeX;}
+
+
+let-inline ctx \teTeX =
+  let f = read-inline ctx in
+    f {te\TeX;}
+
+let-inline ctx \TTH =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fT =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.2))
+    |> set-font-size (size *' 0.8)
+    |> read-inline
+  in
+    f {T} ++ fT {T} ++ f {H}
+
+
+let-inline ctx \HeVeA =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fE =
+    ctx
+    |> set-manual-rising (size *' 0.1)
+    |> set-font-size (size *' 0.7)
+    |> read-inline
+  in
+    f {H} ++ fE {E} ++ kern (size *' 0.07) ++ f {V} ++ kern ( size *' 0.08) ++ fE {E} ++ f {A}
+
+
+let-inline ctx \KaTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fA =
+    ctx
+    |> set-font-size (size *' 0.8)
+    |> set-manual-rising (size *' 0.1)
+    |> read-inline
+  in
+    f {K} ++ kern (size *' 0.15) ++ fA {A} ++ kern (size *' 0.15) ++ f {\TeX;}
+
+
+let-inline ctx \KET =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fE =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.15))
+    |> read-inline
+  in
+    f {K} ++ kern (size *' 0.125) ++ fE {E} ++ kern (size *' 0.1) ++ f {T}
+
+let-inline ctx \KETpic =
+  read-inline ctx {\KET;pic}
+
+
+let-inline ctx \LaTeXiT =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fi =
+    ctx
+    |> set-manual-rising (size *' 0.15)
+    |> read-inline
+  in
+    f {\LaTeX;} ++ kern (size *' 0.07) ++ fi {i} ++ kern (size *' 0.01667) ++ f{T}
+
+
+let-inline ctx \LaTeXML =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fA =
+    ctx
+    |> set-font-size (size *' 0.85)
+    |> set-manual-rising (size *' 0.1)
+    |> read-inline
+  in
+  let fE =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.15))
+    |> read-inline
+  in
+  let fXML =
+    ctx
+    |> set-font-size (size *' 0.8)
+    |> read-inline
+  in
+    f {L} ++ kern (size *' 0.3) ++ fA {A} ++ kern (size *' 0.15)
+      ++ f {T} ++ kern (size *' 0.125) ++ fE {E} ++ fXML {XML}
+
+
+let-inline ctx \pTeXsT =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {p} ++ kern (size *' 0.21) ++ f {\TeX;} ++ kern (size *' 0.1) ++ f {s} ++ kern (size *' 0.21) ++ f{T}
+
+
+let-inline ctx \BaSiX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fAI =
+    ctx
+    |> set-manual-rising (0pt -' (size *' 0.225))
+    |> read-inline
+  in
+    f {B} ++ kern (size *' 0.18) ++ fAI {A} ++ kern (size *' 0.15) ++ f {S}
+      ++ kern (size *' 0.1) ++ fAI {I} ++ kern (size *' 0.1) ++ f {X}
+
+
+let-inline ctx \TeXonLaTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+  let fon = 
+    ctx
+    |> set-font-size (size *' 0.8)
+    |> read-inline
+  in
+    f {\TeX;} ++ inline-skip (size *' 0.2) ++ fon {ON} ++ inline-skip (size *' 0.2) ++ f {\LaTeX;}
+
+
+let-inline ctx \ApTeX =
+  let size = get-font-size ctx in
+  let f = read-inline ctx in
+    f {A} ++ kern (size *' 0.08) ++ f {\pTeX;}
+
+
+let-inline ctx \DVIPDFMx = read-inline ctx {DVIPDFM${x}}
+
+end
