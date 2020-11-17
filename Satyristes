@@ -6,7 +6,7 @@
   ;; Library name
   (name "texlogo")
   ;; Library version
-  (version "0.1.0")
+  (version "0.1.1")
   ;; Files
   (sources
     ((packageDir "src")))
@@ -22,7 +22,7 @@
   ;; Library doc name
   (name "texlogo-doc")
   ;; Library version
-  (version "0.1.0")
+  (version "0.1.1")
   ;; Working directory to build docs
   (workingDirectory "doc")
   ;; Build commands

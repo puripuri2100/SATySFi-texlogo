@@ -1,6 +1,6 @@
 opam-version: "2.0"
 name: "satysfi-texlogo-doc"
-version: "0.1.0"
+version: "0.1.1"
 synopsis: "Document of satysfi-texlogo"
 description: """
 Document of satysfi-texlogo.
