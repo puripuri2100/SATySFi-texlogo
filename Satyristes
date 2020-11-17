@@ -38,4 +38,5 @@
   (dependencies
     ((texlogo ()) ; the main library
      (dist ()) ; Standard library
+     (easytable ())
     )))
